@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./MyDotnetBackend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80" # Map container port 80 to host port 5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - mynetwork
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # React will be served on port 3000 in production
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

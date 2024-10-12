@@ -26,5 +26,8 @@ lerna-debug.log*
 .env
 
 # Docker
-Dockerfile
+# Keep Dockerfile for reproducibility; ignore sensitive or local-specific overrides.
+docker-compose.override.yml
+
+# Others
 *.stackdump
