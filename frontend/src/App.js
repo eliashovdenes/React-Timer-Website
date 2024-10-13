@@ -6,11 +6,11 @@ function App() {
   const [pokemonData, setPokemonData] = useState(null);
 
   // Local
-  const apiUrl = 'http://localhost:5165/PokemonTypes'
+  // const apiUrl = 'http://localhost:5165/PokemonTypes'
 
 
   // With docker
-  // const apiUrl = 'http://localhost:5000/PokemonTypes'
+  const apiUrl = 'http://localhost:5000/PokemonTypes'
 
   // Fetch data from the backend when the component mounts
   useEffect(() => {
