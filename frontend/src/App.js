@@ -4,22 +4,12 @@ import axios from 'axios';
 function App() {
   const [pokemonData, setPokemonData] = useState(null);
 
-  // const apiUrl = process.env.NODE_ENV === 'production' 
-  // ? 'http://localhost:5165/PokemonTypes'  // When accessed via browser, use localhost
-  // : 'http://backend/PokemonTypes';         // Inside Docker, containers can talk to each other
-
-  // const apiUrl = process.env.NODE_ENV !== 'production' 
-  // ? 'http://localhost:5165/PokemonTypes'  // When accessed via browser locally
-  // : 'http://backend/PokemonTypes';  // Inside Docker (if you switch back to Docker)
+  // Local
+  const apiUrl = 'http://localhost:5165/PokemonTypes'
 
 
-
-  // const apiUrl = 'http://backend/PokemonTypes';
-
-  // const apiUrl = 'http://localhost:5000/PokemonTypes';
-
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/PokemonTypes';
-
+  // With docker
+  // const apiUrl = 'http://localhost:5000/PokemonTypes'
 
   // Fetch data from the backend when the component mounts
   useEffect(() => {
@@ -30,6 +20,7 @@ function App() {
       .catch(error => {
         console.error('Error fetching data:', error);
         console.log('API URL:', apiUrl);
+        console.log('API URL:', process.env.REACT_APP_API_URL);
         if (error.response) {
           // The request was made and the server responded with a status code
           console.log('Response error data:', error.response.data);
