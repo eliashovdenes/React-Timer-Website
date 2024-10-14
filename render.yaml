@@ -18,7 +18,6 @@ services:
     env: docker
     dockerfilePath: ./frontend/Dockerfile # Ensure path to Dockerfile is correct
     buildCommand: npm install && npm run build
-    startCommand: nginx -g 'daemon off;' # Use Nginx for the frontend
     plan: free # or "starter" depending on your usage
     envVars:
       - key: NODE_ENV
