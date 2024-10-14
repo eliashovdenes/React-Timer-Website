@@ -10,7 +10,12 @@ function App() {
 
 
   // With docker
-  const apiUrl = 'http://localhost:5000/PokemonTypes'
+  // const apiUrl = 'http://localhost:5000/PokemonTypes'
+
+
+  // const apiUrl = 'http://localhost:5000/PokemonTypes'
+
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch data from the backend when the component mounts
   useEffect(() => {

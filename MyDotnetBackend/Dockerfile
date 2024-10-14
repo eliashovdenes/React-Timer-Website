@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 
 # Copy the .csproj file and restore the dependencies
-COPY ["MyDotnetBackend/MyDotnetBackend.csproj", "./"]
+COPY ["/MyDotnetBackend.csproj", "./"]
 RUN dotnet restore "MyDotnetBackend.csproj"
 
 # Copy the rest of the application files
