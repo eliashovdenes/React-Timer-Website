@@ -1,5 +1,4 @@
 # render.yaml
-
 services:
   - name: backend
     type: web
@@ -14,21 +13,15 @@ services:
       - key: ASPNETCORE_URLS
         value: http://+:80
     healthCheckPath: /health
-    ports:
-      - 80  # Backend listens on port 80
 
   - name: frontend
     type: web
     env: docker
     dockerfilePath: ./frontend/Dockerfile
     buildCommand: npm install && npm run build
-    startCommand: npm run start
+    startCommand: nginx -g 'daemon off;'  # Use Nginx for the frontend
     plan: free  # or "starter" depending on your usage
     envVars:
       - key: NODE_ENV
         value: production
-    dependsOn:
-      - backend  # Waits for the backend to be deployed first
     healthCheckPath: /
-    ports:
-      - 80  # Frontend listens on port 80
