@@ -5,7 +5,7 @@ services:
     env: docker
     dockerfilePath: ./MyDotnetBackend/Dockerfile
     buildCommand: dotnet publish -c Release -o /app/build
-    plan: free  # or "starter" depending on your usage
+    plan: free # or "starter" depending on your usage
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
@@ -16,9 +16,11 @@ services:
   - name: frontend
     type: web
     env: docker
-    dockerfilePath: ./frontend/Dockerfile
+    dockerfilePath: ./frontend/Dockerfile # Ensure path to Dockerfile is correct
     buildCommand: npm install && npm run build
-    plan: free  # or "starter" depending on your usage
+    startCommand: nginx -g 'daemon off;'
+    buildContext: ./frontend # Make sure the build context is correct
+    plan: free
     envVars:
       - key: NODE_ENV
         value: production
