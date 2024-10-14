@@ -9,11 +9,11 @@ RUN dotnet restore "MyDotnetBackend.csproj"
 # Copy the rest of the application files
 COPY . .
 
-# Build the application in Release mode
-RUN dotnet build "MyDotnetBackend.csproj" -c Release -o /app/build
+# Publish the application in Release mode
+RUN dotnet publish "MyDotnetBackend.csproj" -c Release -o /app/publish
 
 # Use the runtime image to run the application
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/build .
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "MyDotnetBackend.dll"]
