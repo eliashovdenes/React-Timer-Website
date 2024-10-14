@@ -5,22 +5,21 @@ import './App.css';
 function App() {
   const [pokemonData, setPokemonData] = useState(null);
 
-  // Local
-  // const apiUrl = 'http://localhost:5165/PokemonTypes'
+  // Use the environment variable for the backend API URL
+  // const apiUrl = process.env.REACT_APP_API_URL; 
 
+  const apiUrl = "https://seahorse-app-wn5zq.ondigitalocean.app/eliashovdenes-mydotnetbackend/Pokemontypes"
 
-  // With docker
-  // const apiUrl = 'http://localhost:5000/PokemonTypes'
+  // const apiUrl = process.env.REACT_APP_API_URL;
+  console.log('API URL:', process.env.REACT_APP_API_URL);
 
-
-  // const apiUrl = 'http://localhost:5000/PokemonTypes'
-
-  const apiUrl = process.env.REACT_APP_API_URL;
+  console.log('All env variables:', process.env);
 
   // Fetch data from the backend when the component mounts
   useEffect(() => {
     axios.get(apiUrl)
       .then(response => {
+        console.log('Received data:', response.data);
         setPokemonData(response.data);
       })
       .catch(error => {
@@ -35,7 +34,11 @@ function App() {
         {pokemonData ? (
           <div className="pokemon-container">
             <p className="pokemon-text">Pokémon: {pokemonData.name}</p>
-            <p className="pokemon-text">Types: {pokemonData.types.join(', ')}</p>
+            {pokemonData.types ? (
+              <p className="pokemon-text">Types: {pokemonData.types.join(', ')}</p>
+            ) : (
+              <p className="pokemon-text">Types: Unknown</p>
+            )}
           </div>
         ) : (
           <p className="loading-text">Loading...</p>
