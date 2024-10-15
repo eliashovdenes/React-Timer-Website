@@ -4,6 +4,10 @@
 
 Check out the live version of the app here: [Timer](https://seahorse-app-wn5zq.ondigitalocean.app)
 
+## Preview
+
+![preview](image.png)
+
 ## Overview
 
 This project is a custom timer web application that combines functionality with motivational quotes. It features a sleek, minimalist design with a dark theme, providing users with a focused and inspiring environment for time management.
