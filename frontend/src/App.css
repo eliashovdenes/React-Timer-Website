@@ -1,40 +1,57 @@
-.container {
+.App {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #393838;
+  z-index: 0;
+}
+
+.timer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  z-index: 1;
+  background-color: transparent;
 }
 
-.header {
+.floating-quote {
+  font-size: 16px;
+  color: #d0d0d0;  /* Light gray color for quotes */
+  max-width: 250px;
   text-align: center;
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  font-weight: 400;  /* Normal weight for better readability on dark background */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);  /* Shadow for better contrast */
 }
 
-.title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
+.MuiCircularProgress-root {
+  background-color: transparent !important;
 }
 
-.pokemon-container {
-  margin-top: 20px;
-  padding: 20px;
-  border: 2px solid #ccc; /* Add a border around the container */
-  border-radius: 10px; /* Rounded corners */
-  background-color: #fafafa;
-  display: inline-block; /* Make the container fit around the content */
+/* Additional styles for better visibility */
+.MuiButton-root {
+  text-transform: none !important;
+  font-weight: bold !important;
 }
 
-.pokemon-text {
-  font-size: 1.5rem;
-  color: #444;
+.MuiIconButton-root {
+  color: #ffffff !important;
 }
 
-.loading-text {
-  font-size: 1.5rem;
-  color: #888;
+.MuiIconButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
