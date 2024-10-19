@@ -72,8 +72,8 @@ function Timer() {
 
   const handleIncrement = () => {
     if (!isRunning && time < 60 * 60) { 
-      setTime(prevTime => prevTime + 1);
-      setInitialTime(prevTime => prevTime + 1);
+      setTime(prevTime => prevTime + 60);
+      setInitialTime(prevTime => prevTime + 60);
     }
   };
 
