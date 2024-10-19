@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Box, Button, CircularProgress, Typography, IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
@@ -41,6 +41,7 @@ function Timer() {
   const [time, setTime] = useState(0);
   const [initialTime, setInitialTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     let interval;
@@ -50,6 +51,9 @@ function Timer() {
           const newTime = prevTime - 1;
           if (newTime === 0) {
             setIsRunning(false);
+            if (audioRef.current) {
+              audioRef.current.play()
+            }
           }
           return newTime;
         });
@@ -68,8 +72,8 @@ function Timer() {
 
   const handleIncrement = () => {
     if (!isRunning && time < 60 * 60) { 
-      setTime(prevTime => prevTime + 60);
-      setInitialTime(prevTime => prevTime + 60);
+      setTime(prevTime => prevTime + 1);
+      setInitialTime(prevTime => prevTime + 1);
     }
   };
 
@@ -145,8 +149,9 @@ function Timer() {
           Reset
         </StyledButton>
       </Box>
+      <audio ref={audioRef} src="/Timer_end.mp3" />
     </Box>
-  );
+  ); 
 }
 
 export default Timer;
