@@ -74,7 +74,7 @@ function Timer() {
   };
 
   const handleDecrement = () => {
-    if (!isRunning && time > 60) {
+    if (!isRunning && time >= 60) {
       setTime(prevTime => prevTime - 60);
       setInitialTime(prevTime => prevTime - 60);
     }
@@ -109,7 +109,7 @@ function Timer() {
             {formatTime(time)}
           </Typography>
           <Box display="flex" alignItems="center" justifyContent="center">
-            <AdjustTimeButton onClick={handleDecrement} disabled={isRunning || time <= 60}>
+            <AdjustTimeButton onClick={handleDecrement} disabled={isRunning || time < 60}>
               <RemoveIcon />
             </AdjustTimeButton>
             <Typography variant="h6" sx={{ mx: 2, color: '#ffffff' }}>
