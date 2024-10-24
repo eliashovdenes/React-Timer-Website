@@ -1,9 +1,5 @@
 # Custom Timer Web Application
 
-## Live Demo
-
-Check out the live version of the app here: [Timer](https://seahorse-app-wn5zq.ondigitalocean.app)
-
 ## Preview
 
 ![preview](image.png)
