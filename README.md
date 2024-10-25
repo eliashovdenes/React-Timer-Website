@@ -25,7 +25,6 @@ This project is a custom timer web application that combines functionality with 
   - C#: Backend logic and API endpoints
 - **Deployment**:
   - Docker: For containerizing the application
-  - DigitalOcean: For hosting the live version
 
 ## How to Run
 
